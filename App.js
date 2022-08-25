@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 
 export default function App() {
   const [value1, setValue1] = useState();
@@ -17,7 +24,7 @@ export default function App() {
   };
   return (
     <View style={styles.container}>
-      <Text>Result = {total} </Text>
+      <Text style={{ fontweight: "bold" }}>Result: {total} </Text>
 
       <View style={styles.Text}>
         <TextInput
@@ -34,8 +41,12 @@ export default function App() {
         />
       </View>
       <View style={styles.ButtonView}>
-        <Button style={styles.Button} title="+" onPress={add} />
-        <Button style={styles.Button} title="-" onPress={subtract} />
+        <TouchableOpacity style={styles.Button} onPress={add}>
+          <Text>+</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.Button} onPress={subtract}>
+          <Text>-</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -49,22 +60,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   Text: {
-    borderBottomWidth: 2,
+    borderWidth: 1,
     borderColor: "gray",
     width: "50%",
-    fontWeight: "bold",
   },
   ButtonView: {
-    marginTop: 10,
-    width: "100%",
+    marginTop: 4,
     flexDirection: "row",
-    justifyContent: "center",
   },
 
   Button: {
-    marginLeft: 10,
-    width: "auto",
-    height: 100,
-    padding: 10,
+    height: 40,
+    width: 40,
+    alignItems: "center",
+    marginHorizontal: 5,
+    borderRadius: 5,
+    justifyContent: "center",
+    backgroundColor: "gray",
   },
 });
